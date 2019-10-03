@@ -2,9 +2,11 @@
 # Use this tag to build a customized local image
 
 SWIFT_VERSION=5.1
-LAYER_VERSION=5-1
+LAYER_VERSION=amazonlinux-2018-03-swift-5-1
 # SWIFT_VERSION=5.0.3
 # LAYER_VERSION=5-0-3
+DOCKERFILE_PATH=amazonlinux-2018.03/5.1
+# DOCKERFILE_PATH=$(SWIFT_VERSION)
 DOCKER_TAG=nio-swift:$(SWIFT_VERSION)
 SWIFT_DOCKER_IMAGE=$(DOCKER_TAG)
 SWIFT_LAMBDA_LIBRARY=nio-swift-lambda-runtime-$(LAYER_VERSION)
@@ -82,7 +84,7 @@ docker_debug:
 			/bin/bash
 			
 docker_build:
-	docker build --tag $(DOCKER_TAG) docker/$(SWIFT_VERSION)/.
+	docker build --tag $(DOCKER_TAG) docker/$(DOCKERFILE_PATH)/.
 
 extract_libraries:
 	docker run \
