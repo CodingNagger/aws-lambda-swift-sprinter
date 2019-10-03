@@ -23,4 +23,4 @@ WORKDIR /swift-source
 RUN git clone https://github.com/apple/swift.git
 RUN ./swift/utils/update-checkout --clone
 RUN ./swift/utils/update-checkout --tag swift-5.1-RELEASE
-RUN ./swift/utils/build-script --preset=buildbot_linux installable_package=$ROOT_DIR/swift-package.tar.gz install_destdir=/tmp/swift
+RUN ./swift/utils/build-script --preset=buildbot_incremental,tools=RA,stdlib=RA,build installable_package=$ROOT_DIR/swift-package.tar.gz install_destdir=/tmp/swift

@@ -122,7 +122,7 @@ clean_layer:
 	rm -r $(SHARED_LIBS_FOLDER) || true
 
 package_layer: create_build_directory clean_layer
-	$(eval SHARED_LIBRARIES := $(shell cat docker/$(SWIFT_VERSION)/swift-shared-libraries.txt | tr '\n' ' '))
+	$(eval SHARED_LIBRARIES := $(shell cat docker/$(DOCKERFILE_PATH)/swift-shared-libraries.txt | tr '\n' ' '))
 	mkdir -p $(SHARED_LIBS_FOLDER)/lib
 	docker run \
 			--rm \
